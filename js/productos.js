@@ -1,4 +1,4 @@
-// productos.js - Generado automáticamente el 27/11/2025 09:02
+// productos.js - Generado automáticamente el 22/02/2026 04:54
 // No editar manualmente → se sobrescribe con el script Python
 
 export const productos = [
@@ -4979,6 +4979,107 @@ export const productos = [
         "imagenes": [
             "https://kossino.com/wp-content/uploads/2023/12/2460465.jpg",
             "https://kossino.com/wp-content/uploads/2023/12/2448896.jpg"
+        ]
+    },
+    {
+        "id": "K-CONT-CUBO-2QT",
+        "titulo": "CUBO DE 2QT (1.5 LITROS)",
+        "descripcion": "MEDIDAS: 18 X 18 X 10cms\n\nCAPACIDAD: 2 quartos / 1.5 litros\n\nMATERIAL: Policarbonato\n\nTAPA: Tapa verde",
+        "precio": 60.0,
+        "imagen": "https://kossino.com/wp-content/uploads/2023/06/2133932-fotor-bg-remover-20241107155722.png",
+        "categoria": {
+            "id": "CONTENEDORES",
+            "nombre": "CONTENEDORES"
+        },
+        "subcategoria": {
+            "id": "CUBOS/TUPERS",
+            "nombre": "CUBOS/TUPERS"
+        },
+        "imagenes": [
+            "https://kossino.com/wp-content/uploads/2023/06/2133932-fotor-bg-remover-20241107155722.png",
+            "https://kossino.com/wp-content/uploads/2023/06/2QT-1.jpg",
+            "https://kossino.com/wp-content/uploads/2023/06/1897145.jpg"
+        ]
+    },
+    {
+        "id": "K-CONT-CUBO-4QT",
+        "titulo": "CUBO DE 4QT (3.5 LITROS)",
+        "descripcion": "MEDIDAS: 18.2 X 18.2 X 19 cms\n\nCAPACIDAD: 4 quartos / 3.5 litros\n\nMATERIAL: Policarbonato\n\nTAPA: Tapa verde",
+        "precio": 80.0,
+        "imagen": "https://kossino.com/wp-content/uploads/2023/06/2133473-fotor-bg-remover-20241107155856.png",
+        "categoria": {
+            "id": "CONTENEDORES",
+            "nombre": "CONTENEDORES"
+        },
+        "subcategoria": {
+            "id": "CUBOS/TUPERS",
+            "nombre": "CUBOS/TUPERS"
+        },
+        "imagenes": [
+            "https://kossino.com/wp-content/uploads/2023/06/2133473-fotor-bg-remover-20241107155856.png",
+            "https://kossino.com/wp-content/uploads/2023/06/4QT-1.jpg",
+            "https://kossino.com/wp-content/uploads/2023/06/1897145.jpg",
+            "https://kossino.com/wp-content/uploads/2023/06/2QT-4QT-1.jpg"
+        ]
+    },
+    {
+        "id": "K-CONT-CUBO-6QT",
+        "titulo": "CUBO DE 6QT  (5.5 LITROS)",
+        "descripcion": "MEDIDAS: 22.5 X 22.5 X 19 cms\n\nCAPACIDAD: 6 quartos / 5.5 litros\n\nMATERIAL: Policarbonato\n\nTAPA: Tapa roja",
+        "precio": 120.0,
+        "imagen": "https://kossino.com/wp-content/uploads/2023/06/2135139-fotor-bg-remover-2024110716034.png",
+        "categoria": {
+            "id": "CONTENEDORES",
+            "nombre": "CONTENEDORES"
+        },
+        "subcategoria": {
+            "id": "CUBOS/TUPERS",
+            "nombre": "CUBOS/TUPERS"
+        },
+        "imagenes": [
+            "https://kossino.com/wp-content/uploads/2023/06/2135139-fotor-bg-remover-2024110716034.png",
+            "https://kossino.com/wp-content/uploads/2023/06/6QT-1.jpg",
+            "https://kossino.com/wp-content/uploads/2023/06/1897406.jpg"
+        ]
+    },
+    {
+        "id": "K-CONT-CUBO-7.5QT",
+        "titulo": "CUBO DE 7.5QT  (7 LITROS)",
+        "descripcion": "MEDIDAS: 22.5 X 22.5 X 23 cms\n\nCAPACIDAD: 7.5 quartos / 7 litros\n\nMATERIAL: Policarbonato\n\nTAPA: Tapa roja",
+        "precio": 140.0,
+        "imagen": "https://kossino.com/wp-content/uploads/2023/06/2134768-fotor-bg-remover-2024110716235.png",
+        "categoria": {
+            "id": "CONTENEDORES",
+            "nombre": "CONTENEDORES"
+        },
+        "subcategoria": {
+            "id": "CUBOS/TUPERS",
+            "nombre": "CUBOS/TUPERS"
+        },
+        "imagenes": [
+            "https://kossino.com/wp-content/uploads/2023/06/2134768-fotor-bg-remover-2024110716235.png",
+            "https://kossino.com/wp-content/uploads/2023/06/1896905.jpg",
+            "https://kossino.com/wp-content/uploads/2023/06/1897406.jpg"
+        ]
+    },
+    {
+        "id": "K-CONT-CUBO-12QT",
+        "titulo": "CUBO DE 12QT (10 LITROS)",
+        "descripcion": "MEDIDAS: 28.5 X 28.5 X 21 cms\n\nCAPACIDAD: 12 quartos / 10 litros\n\nMATERIAL: Policarbonato\n\nTAPA: Tapa azul",
+        "precio": 200.0,
+        "imagen": "https://kossino.com/wp-content/uploads/2023/06/2134167-fotor-bg-remover-2024110716431.png",
+        "categoria": {
+            "id": "CONTENEDORES",
+            "nombre": "CONTENEDORES"
+        },
+        "subcategoria": {
+            "id": "CUBOS/TUPERS",
+            "nombre": "CUBOS/TUPERS"
+        },
+        "imagenes": [
+            "https://kossino.com/wp-content/uploads/2023/06/2134167-fotor-bg-remover-2024110716431.png",
+            "https://kossino.com/wp-content/uploads/2023/06/12QT-1.jpg",
+            "https://kossino.com/wp-content/uploads/2023/06/1897411.jpg"
         ]
     }
 ];
