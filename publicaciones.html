@@ -55,8 +55,8 @@
 
 <div class="sidebar">
     <div class="sidebar-header">
-        <h2 style="margin:0; font-size: 1.2rem;">MARKETING TOOL HD</h2>
-        <p style="margin:5px 0 0; opacity: 0.7; font-size: 0.7rem;">OrganizaGT Business</p>
+        <h2 id="js-brand-name" style="margin:0; font-size: 1.2rem;">MARKETING TOOL HD</h2>
+        <p id="js-brand-tagline" style="margin:5px 0 0; opacity: 0.7; font-size: 0.7rem;">OrganizaGT Business</p>
     </div>
     
     <div class="sidebar-content">
@@ -119,8 +119,35 @@
 </div>
 
 <script>
-    const PROXY = "https://corsproxy.io/?";
-    const LOGO_URL = "img/GuateCocina.png"; 
+    /***********************************************************
+     * CENTRALIZACIÓN DE INFORMACIÓN COMERCIAL
+     ***********************************************************/
+    const COMERCIAL_CONFIG = {
+        tituloPagina: "Social Ads HD Pro | GuateCocina",
+        favicon: "img/GuateCocina.ico",
+        nombreHeader: "MARKETING TOOL HD",
+        tagline: "GuateCocina Business",
+        logoParaImagen: "img/GuateCocina.png",
+        csvDefault: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTk6U3rkUh-DGsx_Pb3PEIRlJT4cpxUM_F1VnWNEkczGR5GvWMYbXg19tIhiA9Zys6r5v73-QwxMco_/pub?output=csv",
+        colorDefault: "#007BC4",
+        hashtagsBase: "#Guatemala #Ventas #TiendaOnline #EnviosGuate #PagoContraEntrega #Ofertas #CocinaGuatemala #Restaurantes #Hoteles #Comedores #Bar #Bares"
+    };
+
+    // Aplicar configuración al cargar
+    window.onload = () => {
+        document.title = COMERCIAL_CONFIG.tituloPagina;
+        document.querySelector("link[rel='icon']").href = COMERCIAL_CONFIG.favicon;
+        document.getElementById('js-brand-name').innerText = COMERCIAL_CONFIG.nombreHeader;
+        document.getElementById('js-brand-tagline').innerText = COMERCIAL_CONFIG.tagline;
+        document.getElementById('csvUrl').value = COMERCIAL_CONFIG.csvDefault;
+        document.getElementById('accentColor').value = COMERCIAL_CONFIG.colorDefault;
+    };
+
+    /***********************************************************
+     * LÓGICA DE FUNCIONAMIENTO
+     ***********************************************************/
+    const PROXY = "https://images.weserv.nl/?url=";
+    const LOGO_URL = COMERCIAL_CONFIG.logoParaImagen; 
     let productosGlobal = [];
 
     function csvToArray(strData) {
@@ -143,13 +170,12 @@
             const rawRows = csvToArray(text);
             
             productosGlobal = rawRows.slice(1).filter(r => r.length > 1 && r[0] !== "").map(r => {
-                // Lógica de separación por signo |
                 const nombreCompleto = r[1] || "";
                 const partes = nombreCompleto.split('|');
                 return {
                     id: r[0], 
-                    tituloDisplay: partes[0].trim(), // Lo que se ve en el select
-                    tituloGancho: partes[1] ? partes[1].trim() : partes[0].trim(), // Lo que irá en la imagen
+                    tituloDisplay: partes[0].trim(), 
+                    tituloGancho: partes[1] ? partes[1].trim() : partes[0].trim(), 
                     imgP: r[2], 
                     imgG: r[3], 
                     cat: r[5], 
@@ -164,7 +190,7 @@
             productosGlobal.forEach(p => {
                 let opt = document.createElement('option');
                 opt.value = p.id; 
-                opt.textContent = p.tituloDisplay; // Nombre limpio
+                opt.textContent = p.tituloDisplay; 
                 select.appendChild(opt);
             });
             alert("✅ Catálogo sincronizado.");
@@ -184,10 +210,20 @@
         if(!p) return;
 
         const waLink = userWA ? `https://wa.me/${userWA.replace(/\D/g,'')}` : "Contáctanos";
-        const tags = `#${p.cat.replace(/\s/g,'')} #${p.subCat.replace(/\s/g,'')} #Guatemala #VentasGT #TiendaOnline #EnviosGuate #VisaGT #Efectivo #Ofertas #OrganizaGT`.replace(/,/g, '');
+        
+        // --- NUEVA LÓGICA DE TÍTULO MARKETPLACE Y HASHTAGS ---
+        const tituloMP = `${p.tituloDisplay} | Nuevo | Envíos a toda Guatemala | Pago Contra Entrega`;
+        
+        // Hashtags dinámicos basados en el producto y tendencias
+        const tagProducto = p.tituloDisplay.replace(/\s/g,'');
+        const tagCategoria = p.cat.replace(/\s/g,'');
+        const tagSub = p.subCat.replace(/\s/g,'');
+        
+        const hashtagsRelacionados = `#${tagProducto} #${tagCategoria} #${tagSub} #Guatemala #Ventas #TiendaOnline #EnviosGuate #PagoContraEntrega #MarketplaceGT #RegalosGuatemala #VisaGT #Efectivo #Ofertas #Viiajo`;
 
         document.getElementById('copyTextArea').value = 
-            `⭐ ¡${p.tituloGancho.toUpperCase()}! ⭐\n\n🔹 ${p.tituloDisplay.toUpperCase()}\n💰 Q${p.precio}\n\n📝 DESCRIPCIÓN:\n${p.desc}\n\n🚚 ENVÍOS A TODA GUATEMALA 🇬🇹\n💳 PAGOS: Efectivo, Transferencia y VISA.\n*(Aplican restricciones)\n\n🛒 COMPRA AQUÍ: ${userWeb}\n📲 WHATSAPP: ${waLink}\n\n${tags}`;
+            `📌 TÍTULO MARKETPLACE:\n${tituloMP}\n\n` +
+            `⭐ ¡${p.tituloGancho.toUpperCase()}! ⭐\n\n🔹 ${p.tituloDisplay.toUpperCase()}\n💰 Q${p.precio}\n\n📝 DESCRIPCIÓN:\n${p.desc}\n\n🚚 ENVÍOS A TODA GUATEMALA 🇬🇹\n💳 PAGOS: Efectivo, Transferencia y VISA.\n*(Aplican restricciones)\n\n🛒 COMPRA AQUÍ: ${userWeb}\n📲 WHATSAPP: ${waLink}\n\n${hashtagsRelacionados}`;
     }
 
     async function renderizarPublicidad() {
@@ -249,7 +285,6 @@
             ctx.fillStyle = "white";
             ctx.textAlign = "left";
             
-            // Usamos el Título Gancho para la imagen
             let textoAMostrar = p.tituloGancho.toUpperCase();
             let fontSize = 60;
             ctx.font = `bold ${fontSize}px Arial`;
@@ -287,16 +322,33 @@
         } catch (e) { console.error(e); }
     }
 
-    function cargarImg(url) {
-        return new Promise((res, rej) => {
-            const img = new Image();
-            img.crossOrigin = "anonymous";
-            img.src = url.startsWith('http') ? PROXY + encodeURIComponent(url) : url;
-            img.onload = () => res(img);
-            img.onerror = (err) => rej(err);
-        });
-    }
+function cargarImg(url) {
+    return new Promise((res, rej) => {
+        if (!url) {
+            rej("URL vacía");
+            return;
+        }
 
+        const img = new Image();
+        img.crossOrigin = "anonymous";
+
+        // Limpiamos la URL: quitamos espacios y el protocolo para el proxy weserv
+        let cleanUrl = url.trim().replace(/^https?:\/\//, '');
+        
+        img.src = PROXY + encodeURIComponent(cleanUrl);
+
+        img.onload = () => res(img);
+        img.onerror = (err) => {
+            console.error("Error cargando imagen desde proxy:", img.src);
+            // Intento final sin proxy por si la imagen permite CORS nativo
+            const imgRetry = new Image();
+            imgRetry.crossOrigin = "anonymous";
+            imgRetry.src = url;
+            imgRetry.onload = () => res(imgRetry);
+            imgRetry.onerror = () => rej(err);
+        };
+    });
+}
     function copiarAlPortapapeles() {
         const area = document.getElementById('copyTextArea');
         area.select();
@@ -305,9 +357,9 @@
     }
 
     function descargarTodo() {
-        const canvases = document.querySelectorAll('canvas');
+        const canvases = document.querySelectorAll('#previewArea canvas');
         const pSelect = document.getElementById('productSelect');
-        if (pSelect.value === "") return alert("Selecciona un producto.");
+        if (pSelect.value === "" || canvases.length === 0) return alert("Selecciona un producto y sincroniza.");
         
         const productName = pSelect.options[pSelect.selectedIndex].text.replace(/[^a-z0-9]/gi, '_').toLowerCase();
 
