@@ -625,5 +625,59 @@
     aplicarConfig();
     cargarDatos();
   </script>
+
+  <div id="ollita-animada" style="
+    position: fixed;
+    top: 5%;
+    right: 20px;
+    width: 150px;
+    z-index: 9999;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    filter: drop-shadow(0px 5px 15px rgba(0,0,0,0.2));
+">
+    <img src="img/Ollita-v3.png" id="img-ollita" alt="Ollita GuateCocina" style="width: 100%; height: auto;">
+</div>
+
+<style>
+    /* Animación Flotante */
+    @keyframes flotar {
+        0% { transform: translateY(0px) rotate(0deg); }
+        50% { transform: translateY(-15px) rotate(2deg); }
+        100% { transform: translateY(0px) rotate(0deg); }
+    }
+
+    /* Animación de saludo al poner el mouse encima */
+    #ollita-animada:hover {
+        transform: scale(1.1) rotate(-5deg);
+    }
+
+    #ollita-animada {
+        animation: flotar 3s ease-in-out infinite;
+    }
+
+    /* Ocultar en pantallas muy pequeñas si estorba al carrito */
+    @media (max-width: 480px) {
+        #ollita-animada {
+            width: 70px;
+            bottom: 200px; /* Sube un poco para no tapar botones del móvil */
+            
+        }
+    }
+</style>
+
+<script>
+    // Configurar la imagen de la mascota
+    // Reemplaza 'URL_DE_TU_IMAGEN' por el link de la Ollita azul con fondo verde que descargaste
+    document.getElementById('img-ollita').src = 'img/Ollita-v3.png'; 
+
+    // Opcional: Que diga algo al hacerle clic
+    document.getElementById('ollita-animada').onclick = function() {
+        alert("¡Hola! Soy Ollita, ¿en qué puedo ayudarte hoy en GuateCocina?");
+    };
+</script>
+
+
+
 </body>
 </html>
